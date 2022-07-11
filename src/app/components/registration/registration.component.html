@@ -1,0 +1,249 @@
+
+
+<div class="background-login login-container">
+
+
+  <mat-stepper class="col-12 stepper" labelPosition="bottom" #stepper>
+
+      <form [formGroup]="formGroup">
+
+    <mat-step>
+      <div class="col-12 row">
+        <ng-template matStepLabel>General Information</ng-template>
+    <div class="col-3">
+    <div class="form-group m-3">
+      <input type="text" class="form-control" id="InputFirstName" formControlName="firstName" aria-describedby="firstNameHelp" placeholder="Enter First Name">
+    </div>
+  </div>
+
+  <div class="col-3">
+
+    <div class="form-group m-3">
+
+      <input type="text" class="form-control" id="InputLastName" formControlName="lastName" aria-describedby="lastNameHelp" placeholder="Enter Last Name">
+    </div>
+
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Last name" formControlName="lastName" required>
+    </mat-form-field> -->
+  </div>
+
+  <div class="col-3">
+
+    <div class="form-group m-3">
+
+      <input type="email" class="form-control" id="exampleInputEmail" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Email Address</mat-label>
+      <input matInput placeholder="Email Address" formControlName="emailAddress" required>
+    </mat-form-field> -->
+
+  </div>
+
+  <div class="col-3">
+
+    <div class="form-group m-3">
+
+      <input type="text" class="form-control" id="exampleInputphoneNumber" formControlName="phoneNumber" aria-describedby="phoneNumberHelp" placeholder="Enter phoneNumber">
+    </div>
+
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Email Address</mat-label>
+      <input matInput placeholder="Email Address" formControlName="emailAddress" required>
+    </mat-form-field> -->
+  </div>
+
+  <div class="col-3">
+    <div class="form-group m-3">
+      <select class="form-control" formControlName="country">
+
+        <option  *ngFor="let country of countryList" [value]="country">
+          {{country}}
+        </option>
+      </select>
+  </div>
+  </div>
+
+  <div class="col-3">
+    <div class="form-group m-3">
+      <select class="form-control" formControlName="isMarried">
+
+        <option  *ngFor="let item of marriedStatus" [value]="item">
+          {{item}}
+        </option>
+      </select>
+  </div>
+  </div>
+
+
+        <div>
+          <button mat-button class="btn btn-primary m-3" matStepperNext>Next</button>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step>
+
+        <ng-template matStepLabel>Visa Information</ng-template>
+
+        <div class="col-12 row">
+
+
+        <div class="col-3">
+          <div class="form-group m-4">
+            <select class="form-control" formControlName="visaType">
+              <option  *ngFor="let visa of visaTypes" [value]="visa">
+                {{visa}}
+              </option>
+            </select>
+        </div>
+        </div>
+
+        <div class="col-3">
+          <div class="form-group m-4">
+            <select class="form-control" formControlName="visaStatus">
+              <option  *ngFor="let visa of visaStatus" [value]="visa">
+                {{visa}}
+              </option>
+            </select>
+        </div>
+        </div>
+
+
+        <div class="col-3">
+
+          <div class="m-4">
+          <mat-form-field>
+
+            <mat-label>Visa Expiration Date</mat-label>
+            <input matInput formControlName="visaExpirationDate" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+
+        </mat-form-field>
+
+      </div>
+
+        </div>
+        <div>
+
+          <button mat-button class="btn btn-secondary m-3" matStepperPrevious>Back</button>
+          <button mat-button class="btn btn-primary m-3" matStepperNext>Next</button>
+
+
+        </div>
+      </div>
+    </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Updload Document</ng-template>
+
+
+
+    <div class="col-12 uploader">
+      <button  class="btn btn-success px-6 ml-3" type="button"  (click)="onClickUpload()">
+        Add Upload Documents +
+         </button>
+
+
+      <input #fileUpload type="file" name="fileUpload" accept="*/*" id="fileUpload" style="display: none" />
+    </div>
+    <mat-progress-bar mode="determinate" [value]="uploadedFile.progress"
+      *ngIf="uploadedFile.progressStatus=='in-progress'"></mat-progress-bar>
+    <div class="bg-white" *ngIf="uploadedFile.progressStatus=='uploaded'">
+
+      <a class="static flex flex-col w-40 h-40 m-2 p-4 shadow rounded-2xl cursor-pointer bg-card "
+        [href]="uploadedFile.fullFilePath" target="_blank">
+        <div class=" aspect-w-9 aspect-h-6">
+
+          <div class="static flex items-center justify-center">
+            <img src="assets/images/icons/remove.png" (click)="removeImage()"
+              class="absolute top-0 left-0 z-10 w-8 cursor-pointer">
+            <!-- Icons -->
+            <div class="relative ">
+              <mat-icon class="icon-size-14 text-hint" *ngIf="!isFileImage()" [svgIcon]="'iconsmind:file'"></mat-icon>
+              <div *ngIf="!isFileImage()"
+                class="absolute left-0 bottom-0 px-1.5 rounded text-sm font-semibold leading-5 text-white "
+                [class.bg-red-600]="uploadedFile.extention === 'PDF'"
+                [class.bg-blue-600]="uploadedFile.extention === 'DOC'"
+                [class.bg-green-600]="uploadedFile.extention === 'XLSX'"
+                [class.bg-gray-600]="uploadedFile.extention=== 'TXT'"
+                [class.bg-amber-600]="uploadedFile.extention === 'JPG'"
+                [class.bg-amber-600]="uploadedFile.extention === 'PNG'">
+                {{uploadedFile.extention}}
+              </div>
+              <img [src]="uploadedFile.fullFilePath" *ngIf="isFileImage()">
+            </div>
+
+          </div>
+
+        </div>
+        <!-- <div class="flex flex-col flex-auto justify-center text-center text-sm font-medium">
+          <div class="truncate" [matTooltip]="fileName">{{fileName}}</div>
+
+        </div> -->
+      </a>
+    </div>
+
+    <mat-divider class="mt-4 mb-4"></mat-divider>
+
+
+    <div>
+
+      <button mat-button class="btn btn-secondary m-3" matStepperPrevious>Back</button>
+      <button mat-button class="btn btn-primary m-3" matStepperNext>Next</button>
+
+
+    </div>
+  </mat-step>
+
+    <mat-step>
+
+      <ng-template matStepLabel>Done</ng-template>
+      <div class="col-12 row">
+        <div class="col-3 m-2">
+          <label class="title3">First Name : {{formGroup.value.firstName}} </label>
+        </div>
+        <div class="col-3 m-2">
+          <label class="title3">Last Name : {{formGroup.value.lastName}} </label>
+        </div>
+
+        <div class="col-3 m-2">
+          <label class="title3">Email : {{formGroup.value.email}} </label>
+        </div>
+
+        <div class="col-3 m-2">
+          <label class="title3">Phone Number : {{formGroup.value.phoneNumber}} </label>
+        </div>
+
+        <div class="col-3 m-2">
+          <label class="title3">Your Country : {{formGroup.value.country}} </label>
+        </div>
+
+        <div class="col-3 m-2">
+          <label class="title3">Married Status: {{formGroup.value.isMarried}} </label>
+        </div>
+
+        <div class="col-3 m-2">
+          <label class="title3">Your Visa Type: {{formGroup.value.visaType}} </label>
+        </div>
+
+        <div class="col-3 m-2">
+          <label class="title3">Your Visa Status: {{formGroup.value.visaStatus}} </label>
+        </div>
+
+        <div class="col-3 m-2">
+          <label class="title3">Visa Expiration Date: {{formGroup.value.visaExpirationDate}} </label>
+        </div>
+      </div>
+      <div>
+        <button mat-button class="btn btn-secondary m-3" matStepperPrevious>Back</button>
+        <button (click)="save()" mat-button class="btn btn-success m-3" matStepperNext>Save</button>
+      </div>
+    </mat-step>
+    </form>
+
+  </mat-stepper>
+  </div>

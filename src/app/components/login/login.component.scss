@@ -1,0 +1,25 @@
+
+.background-login {
+  background-image: linear-gradient(rgb(109 114 237), rgb(182 185 246));
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+}
+
+.login-container {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  margin: auto;
+  background-color: #faf7f7;
+  height: 400px;
+  width: 400px;
+  border-radius: 12px;
+}
