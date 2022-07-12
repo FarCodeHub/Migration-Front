@@ -1,10 +1,10 @@
 .container {
-height: 600px;
+height: 500px;
 width: 60%;
 margin: auto;
 }
 .title {
-  color: white;
+  //color: white;
   font-size: xx-large;
   font-family: cursive;
   margin: 24px;
@@ -15,14 +15,20 @@ margin: auto;
   margin: 24px;
   font-size: x-large;
   font-family: cursive;
-  color: white;
+ // color: white;
 }
 
 .title-q {
   display: inline;
   font-size: large;
   font-family: cursive;
-  margin: 24px;
+
   color: blueviolet;
   font-weight: 700;
+}
+
+.question-box {
+  background-color: white;
+    border-radius: 12px;
+    padding: 32px;
 }

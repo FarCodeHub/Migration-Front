@@ -3,11 +3,11 @@
 <div class="background-login login-container">
 
 
-  <mat-stepper class="col-12 stepper" labelPosition="bottom" #stepper>
+  <mat-stepper class="col-12 stepper"  labelPosition="bottom" #stepper>
 
       <form [formGroup]="formGroup">
 
-    <mat-step>
+    <mat-step [editable]="!isDone">
       <div class="col-12 row">
         <ng-template matStepLabel>General Information</ng-template>
     <div class="col-3">
@@ -84,7 +84,7 @@
         </div>
       </div>
     </mat-step>
-    <mat-step>
+    <mat-step [editable]="!isDone">
 
         <ng-template matStepLabel>Visa Information</ng-template>
 
@@ -137,14 +137,14 @@
       </div>
     </mat-step>
 
-  <mat-step>
+  <mat-step [editable]="!isDone">
     <ng-template matStepLabel>Updload Document</ng-template>
 
 
 
     <div class="col-12 uploader">
       <button  class="btn btn-success px-6 ml-3" type="button"  (click)="onClickUpload()">
-        Add Upload Documents +
+         + Upload Documents
          </button>
 
 
@@ -199,10 +199,10 @@
     </div>
   </mat-step>
 
-    <mat-step>
+    <mat-step [editable]="!isDone">
 
       <ng-template matStepLabel>Done</ng-template>
-      <div class="col-12 row">
+      <div class="col-12 row" *ngIf="!isDone">
         <div class="col-3 m-2">
           <label class="title3">First Name : {{formGroup.value.firstName}} </label>
         </div>
@@ -237,10 +237,21 @@
         <div class="col-3 m-2">
           <label class="title3">Visa Expiration Date: {{formGroup.value.visaExpirationDate}} </label>
         </div>
-      </div>
-      <div>
+        <div class="col-3 m-2">
         <button mat-button class="btn btn-secondary m-3" matStepperPrevious>Back</button>
         <button (click)="save()" mat-button class="btn btn-success m-3" matStepperNext>Save</button>
+      </div>  </div>
+      <div class="col-12 row" *ngIf="isDone">
+        <div class="col-4"></div>
+        <div class="col-4 m-2">
+          <img src="assets/images/done.png" style="width: 30%;
+          display: block;
+          margin-left: 64px;" alt="">
+          <label class="title3" style="display:block;    margin-top: 16px;
+          margin-bottom: 16px;"> Your registration was successful </label>
+          <button class="btn btn-success" style="    margin-left: 90px;" (click)="done()">Done</button>
+        </div>
+        <div class="col-4"></div>
       </div>
     </mat-step>
     </form>

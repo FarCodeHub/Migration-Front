@@ -21,6 +21,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { UsersComponent } from './components/users/users.component';
+import { AgGridModule } from 'ag-grid-angular';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +32,8 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     RegistrationComponent,
     QuestionsComponent,
     SignUpComponent,
+    UsersComponent,
+
 
 
   ],
@@ -51,7 +56,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     MatProgressBarModule,
     MatTooltipModule,
     HttpClientModule,
-
+    AgGridModule
 
   ],
   providers: [],

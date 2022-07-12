@@ -9,6 +9,7 @@ import { PersonService } from 'src/app/services/person.service';
 import { CreatePersonCommand } from 'src/app/models/create-person-command';
 import { GlobalService } from 'src/app/services/global.service';
 import { useAnimation } from '@angular/animations';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -36,10 +37,10 @@ export class RegistrationComponent implements OnInit {
   marriedStatus :any = ["Married Status ?","Married","Single"];
   visaTypes :any = ["Your Visa Type","Student","Temporary agricultural worker" , "Temporary worker","Tourism","Vacation","Pleasure visitor"];
   visaStatus :any = ["Your Visa Sattus","Religious Worker Visa","Crew D Visa","Domestic Employee Visa" , "Media and Journalist Visa"]
+  isDone = false;
 
 
-
-  constructor(private _formBuilder: FormBuilder,private uploadFileService: UploadFileService,
+  constructor(private _formBuilder: FormBuilder,private uploadFileService: UploadFileService,private router: Router,
     private personService:PersonService,
     private globalService:GlobalService) {}
 
@@ -96,7 +97,7 @@ export class RegistrationComponent implements OnInit {
             break;
           case HttpEventType.Response:
             let fileName = event.body.objResult;
-            this.formGroup.get('filePath')?.setValue(fileName);
+            this.formGroup.get('filePath')?.setValue(fileName.fileName);
             this.uploadedFile.extention = fileName.split(".")[1].toUpperCase();
             this.uploadedFile.filePath = fileName;
             this.uploadedFile.fullFilePath = `${environment.imageUrl}` + "/" + fileName;
@@ -136,7 +137,13 @@ export class RegistrationComponent implements OnInit {
     let user = this.globalService.loadUser();
     this.createPersonCommand.userId = user.id;
     this.personService.add(this.createPersonCommand).subscribe(result =>{
+        if(result.succeed)
+          this.isDone = true;
+
      })
+  }
+  done(){
+    this.router.navigate(['/login']);
   }
 
 }

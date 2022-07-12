@@ -1,0 +1,60 @@
+<div   class="data-grid flex-column d-flex">
+  <div   class="filter-area">
+    <div class="filters d-flex">
+      <div class="search-dropdown ml-auto">
+        <input type="search" placeholder="search by {{searchField.title}}" (change)="onSearch($event)"  />
+      </div>
+      <!-- <div class="search-date"> </div> -->
+
+      <div class="dropdown">
+        <ul class="dropdown-menu filter-types m-0">
+          <li class="dropdown-item active"> By Center Name </li>
+        </ul>
+      </div>
+
+      <!-- <c-button [isFlat]="true" color="blue" class="filter mx-2"> By&nbsp;{{searchField.title}} </c-button> -->
+    </div>
+    <div style="text-align: center; color: #888; cursor: pointer" class="mt-2">
+      <span *ngIf="!filterExpanded"> More Filters&nbsp; <i class="fas fa-chevron-down"> </i> </span>
+      <span *ngIf="filterExpanded"> Less Filters&nbsp; <i class="fas fa-chevron-up"> </i> </span>
+    </div>
+  </div>
+  <div class="data-area mt-2">
+    <table class="table">
+      <thead>
+        <tr class="my-3">
+          <th *ngFor="let col of columns">
+            <a (click)="sort(col)">
+              <span *ngIf="col.sortable" class="ml-1"> <i class="fas fa-sort-alpha-up-alt"> </i> </span>
+              <span> {{col.title}} </span>
+            </a>
+          </th>
+          <th> action </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of displayedData" (click)="onClickHandler(item)" class="mb-3">
+          <td *ngFor="let col of columns"> {{item[col.field]}} </td>
+          <td class="row-options">
+            <span (click)="openAction($event)" class="extra-options c-pointer">
+              <i data-mdb-toggle="dropdown" class="icons icon-dot dropdown-toggle mx-0"></i>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a (click)="onActionClickHandler(item,'edit')" class="dropdown-item c-pointer d-flex transition">
+                    <span class="mx-1"> Edit </span>
+                  </a>
+                </li>
+                <li>
+                  <a (click)="onActionClickHandler(item,'delete')" class="dropdown-item c-pointer d-flex transition">
+                    <span class="mx-1"> Delete </span>
+                  </a>
+                </li>
+              </ul>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #actions> </ng-template>
+</div>

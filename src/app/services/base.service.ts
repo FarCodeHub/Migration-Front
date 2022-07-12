@@ -22,12 +22,12 @@ export class BaseService {
 
   constructor(private http: HttpClient) { }
 
-  // getData<T>(controller: String, action: string = ""): Observable<T> {
-  //   return this.http.get<T>(`${environment.apiUrl}/${controller}/${action}`)
-  //     .pipe(
-  //       catchError(this.handleError.bind(this))
-  //     );
-  // }
+  getData<T>(controller: String, action: string = ""): Observable<T> {
+    return this.http.get<T>(`${environment.apiUrl}/${controller}/${action}`)
+      .pipe(
+        catchError(this.handleError.bind(this))
+      );
+  }
 
 
   getDataByParam<T>(params:any, controller: String, action: string = "") {
@@ -37,6 +37,7 @@ export class BaseService {
       catchError(this.handleError.bind(this))
     );
   }
+
 
 
   postJsonData<T>(data: any, controller: String, action: string = "") {
