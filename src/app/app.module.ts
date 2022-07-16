@@ -19,10 +19,16 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTableModule} from '@angular/material/table';
+
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { UsersComponent } from './components/users/users.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { AcceptRequestDialogComponent } from './components/users/accept-request-dialog/accept-request-dialog.component';
+import {  MatDialogModule } from '@angular/material/dialog';
+import {  MatCheckboxModule } from '@angular/material/checkbox';
+import { LawyerConditionDialogComponent } from './components/users/lawyer-condition-dialog/lawyer-condition-dialog.component';
 
 
 @NgModule({
@@ -33,6 +39,8 @@ import { AgGridModule } from 'ag-grid-angular';
     QuestionsComponent,
     SignUpComponent,
     UsersComponent,
+    AcceptRequestDialogComponent,
+    LawyerConditionDialogComponent,
 
 
 
@@ -56,7 +64,10 @@ import { AgGridModule } from 'ag-grid-angular';
     MatProgressBarModule,
     MatTooltipModule,
     HttpClientModule,
-    AgGridModule
+    AgGridModule,
+    MatTableModule,
+    MatDialogModule,
+    MatCheckboxModule
 
   ],
   providers: [],

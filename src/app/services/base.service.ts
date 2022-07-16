@@ -18,12 +18,17 @@ import { environment } from 'src/environments/environment';
 })
 export class BaseService {
 
-
-
   constructor(private http: HttpClient) { }
 
   getData<T>(controller: String, action: string = ""): Observable<T> {
     return this.http.get<T>(`${environment.apiUrl}/${controller}/${action}`)
+      .pipe(
+        catchError(this.handleError.bind(this))
+      );
+  }
+
+  getDataById<T>(id: any, controller: String, action: string = ""): Observable<T> {
+    return this.http.get<T>(`${environment.apiUrl}/${controller}/${action}?id=${id}`)
       .pipe(
         catchError(this.handleError.bind(this))
       );

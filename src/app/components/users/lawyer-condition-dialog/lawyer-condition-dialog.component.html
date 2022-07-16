@@ -1,0 +1,35 @@
+
+<h2 mat-dialog-title>Terms & Conditions of Lawyers</h2>
+
+<form [formGroup]="form">
+  <div *ngFor="let item of personLawyers">
+    <mat-dialog-content class="mat-typography">
+      <div class="m-3">
+        <mat-label>Please Select Your Lawyer : </mat-label>
+        <select formControlName="lawyer" (change)="onChange(form.get('lawyer')?.value)">
+          <option value="-1">
+            Select Lawyer
+          </option>
+          <option *ngFor="let item of lawyers" [value]="item.id">
+            {{item.fullName}}
+          </option>
+        </select>
+        <input type="button" class="mx-2" value="+" (click)="addItem()">
+      </div>
+
+
+
+          <div *ngFor="let j of conditions">
+            <input type="checkbox" [value]="j.id" (change)="onCheckboxChange($event)" class="m-2"/> {{j.description}}
+        </div>
+
+
+
+      </mat-dialog-content>
+  </div>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Accept</button>
+</mat-dialog-actions>
+</form>

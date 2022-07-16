@@ -57,8 +57,8 @@
   </div>
 
   <div class="col-3">
-    <div class="form-group m-3">
-      <select class="form-control" formControlName="country">
+    <div class=" m-3">
+      <select formControlName="country">
 
         <option  *ngFor="let country of countryList" [value]="country">
           {{country}}
@@ -68,8 +68,8 @@
   </div>
 
   <div class="col-3">
-    <div class="form-group m-3">
-      <select class="form-control" formControlName="isMarried">
+    <div class=" m-3">
+      <select formControlName="isMarried">
 
         <option  *ngFor="let item of marriedStatus" [value]="item">
           {{item}}
@@ -92,8 +92,8 @@
 
 
         <div class="col-3">
-          <div class="form-group m-4">
-            <select class="form-control" formControlName="visaType">
+          <div class="m-4">
+            <select   formControlName="visaType">
               <option  *ngFor="let visa of visaTypes" [value]="visa">
                 {{visa}}
               </option>
@@ -102,8 +102,8 @@
         </div>
 
         <div class="col-3">
-          <div class="form-group m-4">
-            <select class="form-control" formControlName="visaStatus">
+          <div class=" m-4">
+            <select   formControlName="visaStatus">
               <option  *ngFor="let visa of visaStatus" [value]="visa">
                 {{visa}}
               </option>

@@ -1,4 +1,5 @@
 export interface PersonModel {
+  id:number;
   firstName:String;
   lastName:String;
   email:String;
@@ -10,4 +11,5 @@ export interface PersonModel {
   visaExpirationDate  :Date;
   filePath :String;
   userId:number;
+  isDeleted:boolean
   }

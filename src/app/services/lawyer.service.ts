@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CreatePersonCommand } from '../models/create-person-command';
 import { CreateUserCommand } from '../models/create-user-command';
+import { LawyerModel } from '../models/lawyer-model';
 import { PersonModel } from '../models/person-model';
 import { ServiceResult } from '../models/service-result';
 import { BaseService } from './base.service';
@@ -12,23 +13,23 @@ import { BaseService } from './base.service';
 @Injectable({
     providedIn: 'root',
 })
-export class PersonService {
-    controllerName: String = 'Person';
+export class LawyerService {
+    controllerName: String = 'Lawyer';
     constructor(private dataService: BaseService) {}
 
-    add(model: CreatePersonCommand) {
-        return this.dataService.postJsonData<ServiceResult<CreatePersonCommand>>(
-            model,
-            this.controllerName,
-            'Add'
-        );
-    }
+    // add(model: CreatePersonCommand) {
+    //     return this.dataService.postJsonData<ServiceResult<CreatePersonCommand>>(
+    //         model,
+    //         this.controllerName,
+    //         'Add'
+    //     );
+    // }
 
 
-    getPersons() {
-      return this.dataService.getData<PersonModel[]>(
+    getLawyers() {
+      return this.dataService.getData<LawyerModel[]>(
           this.controllerName,
-          'GetPersons'
+          'GetLawyers'
       ) .pipe(map((result) => result));
   }
 
