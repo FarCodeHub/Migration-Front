@@ -1,8 +1,8 @@
-import { Condition } from "./condition";
+import { LawyerCondition } from "./condition";
 
 export interface LawyerModel {
-  id:number,
-  fullName:string,
-  code:string,
-  conditions:Condition[]
+    id: number,
+    fullName: string,
+    code: string,
+    conditions: LawyerCondition[]
 }

@@ -1,4 +1,4 @@
-export interface Condition {
-  id:number,
-  description:string,
+export interface LawyerCondition {
+    id: number,
+    title: string,
 }

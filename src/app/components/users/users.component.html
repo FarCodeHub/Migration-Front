@@ -1,72 +1,83 @@
 <div class="background-login login-container p-2">
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <!--- Note that these columns can be defined in any order.
+        <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="firstName">
-      <th mat-header-cell *matHeaderCellDef> First Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
-    </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="firstName">
+            <th mat-header-cell *matHeaderCellDef> First Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef> Last Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
-    </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="lastName">
+            <th mat-header-cell *matHeaderCellDef> Last Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef> Email </th>
-      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-    </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="country">
-      <th mat-header-cell *matHeaderCellDef> Country </th>
-      <td mat-cell *matCellDef="let element"> {{element.country}} </td>
-    </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="country">
+            <th mat-header-cell *matHeaderCellDef> Country </th>
+            <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+        </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="visaType">
-      <th mat-header-cell *matHeaderCellDef> Visa Type </th>
-      <td mat-cell *matCellDef="let element"> {{element.visaType}} </td>
-    </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="visaType">
+            <th mat-header-cell *matHeaderCellDef> Visa Type </th>
+            <td mat-cell *matCellDef="let element"> {{element.visaType}} </td>
+        </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="visaStatus">
-          <th mat-header-cell *matHeaderCellDef> Visa Status </th>
-          <td mat-cell *matCellDef="let element"> {{element.visaStatus}} </td>
+            <th mat-header-cell *matHeaderCellDef> Visa Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.visaStatus}} </td>
         </ng-container>
 
-            <!-- Symbol Column -->
-    <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef> Action </th>
-      <td mat-cell *matCellDef="let element">
-        <div *ngIf="element.isDeleted == null">
-        <mat-icon class="text-primary icon-click">attachment</mat-icon>
-        <mat-icon class="mx-4 text-success icon-click" (click)="isApproved(element)">add_circle</mat-icon>
-        <mat-icon class="text-danger icon-click" (click)="isRejected(element)">remove_circle</mat-icon>
-      </div>
-
-      <div *ngIf="element.isDeleted == false">
-            <mat-label class="text-success">{{element.lawyerFullName}}</mat-label>
-      </div>
-
-      <div *ngIf="element.isDeleted == true">
-        <mat-label class="text-danger">Rejected</mat-label>
-  </div>
-      </td>
-    </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element">
+                <div *ngIf="element.isDeleted == null">
+                    <button mat-icon-button>
+                        <mat-icon class="text-primary icon-click">attachment</mat-icon>
+                    </button>
 
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+                    <button mat-stroked-button class="mx-2" (click)="isApproved(element)">
+                        <mat-icon class="me-1 text-success icon-click">add_circle</mat-icon>
+                        Accept
+                    </button>
+                    <button mat-stroked-button (click)="isRejected(element)">
+                        <mat-icon class="me-1 text-danger icon-click">remove_circle</mat-icon>
+                        Reject
+                    </button>
 
-<!--
+                </div>
+
+                <div *ngIf="element.isDeleted == false">
+                    <mat-label class="text-success">{{element.lawyerFullName}}</mat-label>
+                </div>
+
+                <div *ngIf="element.isDeleted == true">
+                    <mat-label class="text-danger">Rejected</mat-label>
+                </div>
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!--
     <ag-grid-angular
     style="width: 95%;
     height: 80%;"

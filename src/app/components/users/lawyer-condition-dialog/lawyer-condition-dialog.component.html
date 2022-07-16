@@ -1,35 +1,48 @@
+<div mat-dialog-title> Accept Application and Assign Laywer(s)
 
-<h2 mat-dialog-title>Terms & Conditions of Lawyers</h2>
+</div>
 
-<form [formGroup]="form">
-  <div *ngFor="let item of form.controls['lawyerConditions'].controls" formGroupName="lawyerConditions">
-    <mat-dialog-content class="mat-typography">
-      <div class="m-3">
-        <mat-label>Please Select Your Lawyer : </mat-label>
-        <select formControlName="lawyerConditions.get('lawyerId')" (change)="onChange(form.get('lawyer')?.value)">
-          <option value="-1">
-            Select Lawyer
-          </option>
-          <option *ngFor="let item of lawyers" [value]="item.id">
-            {{item.fullName}}
-          </option>
-        </select>
-        <input type="button" class="mx-2" value="+" (click)="addItem()">
-      </div>
-
+<div mat-dialog-content class="p-4">
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Lawyer</mat-label>
+            <mat-select [(ngModel)]="selectedLaywer">
+                <mat-option value="">
+                    Select a Lawyer...
+                </mat-option>
+                <mat-option *ngFor="let l of lawyers" [value]="l">
+                    {{l.fullName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
 
-          <div *ngFor="let j of conditions">
-            <input type="checkbox" [value]="j.id" (change)="onCheckboxChange($event)" class="m-2"/> {{j.description}}
+        <button mat-raised-button color="primary" class="mx-2" (click)="addItem()">
+            <mat-icon class="me-1 icon-click">add</mat-icon>
+            Add Lawyer
+        </button>
+    </div>
+
+    <mat-divider></mat-divider>
+    <mat-card *ngFor="let pl of personLawyer" class="mt-2">
+        <div class="d-flex">
+            <h3 class="flex-fill">Lawyer: <b>{{pl.lawyer.fullName}}</b></h3>
+            <button mat-stroked-button (click)="deleteLawyer(pl)">
+                <mat-icon class="me-1 text-danger ">delete</mat-icon>
+                Remove
+            </button>
         </div>
+        <div *ngFor="let c of pl.conditions">
+            <mat-checkbox [(ngModel)]="c.isSelected"> {{c.title}}</mat-checkbox>
+        </div>
+    </mat-card>
 
 
 
-      </mat-dialog-content>
-  </div>
 
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Accept</button>
-</mat-dialog-actions>
-</form>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+</div>
