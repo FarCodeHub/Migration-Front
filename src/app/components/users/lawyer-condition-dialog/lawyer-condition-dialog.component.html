@@ -2,11 +2,11 @@
 <h2 mat-dialog-title>Terms & Conditions of Lawyers</h2>
 
 <form [formGroup]="form">
-  <div *ngFor="let item of personLawyers">
+  <div *ngFor="let item of form.controls['lawyerConditions'].controls" formGroupName="lawyerConditions">
     <mat-dialog-content class="mat-typography">
       <div class="m-3">
         <mat-label>Please Select Your Lawyer : </mat-label>
-        <select formControlName="lawyer" (change)="onChange(form.get('lawyer')?.value)">
+        <select formControlName="lawyerConditions.get('lawyerId')" (change)="onChange(form.get('lawyer')?.value)">
           <option value="-1">
             Select Lawyer
           </option>

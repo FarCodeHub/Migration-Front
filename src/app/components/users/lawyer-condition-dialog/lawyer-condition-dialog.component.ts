@@ -16,29 +16,27 @@ import { environment } from 'src/environments/environment';
 })
 export class LawyerConditionDialogComponent implements OnInit {
 
-    personLawyers:PersonLawyers[]=[];
+
     personLawyer!:PersonLawyers;
     lawyers !: LawyerModel[]
     form!:FormGroup;
     conditions!:Condition[];
-    person!:PersonModel;
-    lawyer!:LawyerModel;
-    condition!:Condition;
+     person !: PersonModel
 
 
     constructor(private lawyerService:LawyerService,
       private _formBuilder:FormBuilder,
       private conditionService:ConditionService,@Inject(MAT_DIALOG_DATA) public data: any) { }
   ngOnInit(): void {
-    this.personLawyers.push(this.personLawyer);
+  //   this.personLawyers.push(this.personLawyer);
 
     this.form = new FormGroup({
      personId:new FormControl,
-     lawyerId:new FormControl,
+
      lawyerConditions:new FormArray([])
 
     })
-this.person =  JSON.parse(this.data.data);
+      this.person = JSON.parse(this.data.data);
 
     this.lawyerService.getLawyers().subscribe(item=>this.lawyers = item);
   }
@@ -55,23 +53,23 @@ onCheckboxChange(event:any){
   let id = Number(event.target.value);
 
   let lawyerId = this.form.get('lawyer')?.value;
-  let personId = this.person.id;
-  this.personLawyer.personId = personId;
-  this.lawyer.id = lawyerId;
-  this.condition.id= id
-  this.lawyer.conditions.push(this.condition);
-  this.personLawyer.lawyers.push(this.lawyer);
+//  let personId = this.person.id;
+ // this.personLawyer.personId = personId;
+  // this.lawyer.id = lawyerId;
+  // this.condition.id= id
+  // this.lawyer.conditions.push(this.condition);
+  // this.personLawyer.lawyers.push(this.lawyer);
 
 }
 addItem(){
 
   this.form.controls['personId'].setValue(this.personLawyer.personId);
 
-  this.form.controls['lawyerConditions'].push(new FormGroup({
+  (this.form.get('lawyerConditions') as FormArray).push(new FormGroup({
     lawyerId: new FormControl(),
     conditions : new FormControl()
   }))
-  this.personLawyers.push(this.personLawyer);
+ // this.personLawyers.push(this.personLawyer);
 
 }
 }
