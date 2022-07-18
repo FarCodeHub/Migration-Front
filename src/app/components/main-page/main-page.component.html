@@ -1,0 +1,68 @@
+<div>
+    <div class="container">
+        <header class="row my-5">
+            <div class="row mt-5">
+                <div class="col-md-6 px-5">
+                    <h1> Our Goal is to simplify complex world at Immigration</h1>
+                    <h3 style="margin-bottom: 32px;">How we can Help :</h3>
+
+                    <div class="col-12 ">
+                        <label class="title-q">1- I have :</label>
+                        <div class="form-group mt-1">
+                            <select class="form-select">
+                                <option *ngFor="let visa of visaTypes" [value]="visa">
+                                    {{visa}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12  mt-4">
+                        <label class="title-q">2- Im going to apply :</label>
+                        <div class="form-group mt-1">
+                            <select class="form-select">
+                                <option *ngFor="let visa of visaTypes" [value]="visa">
+                                    {{visa}}
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-12">
+                        <button type="button" class="btn btn-primary btn-lg m-3 " (click)="next()" style="float:right;color: white;">
+                            Proceed >>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6 bg-black d-flex align-items-center">
+                    <img src="assets/images/p2.jpeg" style="width: 100%;">
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="p-3" style="background-color: #f0f5ff;">
+        <div class="container">
+            <section class="row mt-4">
+                <div class="col-4">
+                    <h1 class="bg-info text-white p-2">1.</h1>
+                    <h2>Submit Your Application</h2>
+                    <p>Register on the website and submit your appliction in order to let us to process your application</p>
+                </div>
+                <div class="col-4">
+                    <h1 class="bg-info  text-white p-2">2.</h1>
+                    <h2>Process The Application</h2>
+                    <p>We will process your application and send them to our lawyers and wait to accept</p>
+                </div>
+                <div class="col-4">
+                    <h1 class="bg-info  text-white p-2">2.</h1>
+                    <h2>Finalize the Application</h2>
+                    <p></p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+</div>

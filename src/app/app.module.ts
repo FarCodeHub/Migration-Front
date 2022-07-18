@@ -32,6 +32,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LawyerConditionDialogComponent } from './components/users/lawyer-condition-dialog/lawyer-condition-dialog.component';
 import { RequestStatusComponent } from './components/request-status/request-status.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { RequestStatusComponent } from './components/request-status/request-stat
         AcceptRequestDialogComponent,
         LawyerConditionDialogComponent,
         RequestStatusComponent,
+        MainPageComponent,
 
 
 

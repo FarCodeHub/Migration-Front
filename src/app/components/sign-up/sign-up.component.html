@@ -1,33 +1,51 @@
-<div class="background-login login-container p-2">
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 d-flex align-items-center" style="background: #AE8C71;">
+            <img src="assets/images/p3.jpeg" style="width: 100%;">
+        </div>
+        <div class="col-6 px-5">
 
-  <div class="login-box" style="height: 450px;">
-   <form [formGroup]="registerForm" class="p-4">
-     <div class="form-group m-3">
-       <label for="exampleInputEmail1">Email address</label>
-       <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-     </div>
-     <div class="form-group m-3">
-      <label for="exampleInputUsername">UserName</label>
-      <input type="text" class="form-control" formControlName="userName" id="exampleInputuserName" placeholder="userName">
+            <form [formGroup]="registerForm" class="card bg-light shadow p-5">
+                <div>
+                    <h1><b> Register</b></h1>
+                    <hr>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group mt-1">
+                    <label for="exampleInputUsername">UserName</label>
+                    <input type="text" class="form-control" formControlName="userName" id="exampleInputuserName" placeholder="userName">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="mx-3"><label class="text-primary">Terms</label></div>
+
+                <div class="form-check mx-3">
+
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+
+                    <label class="form-check-label" for="exampleCheck1">Please confirm that you agree to our terms & conditions</label>
+                </div>
+                <div>
+                    <button type="button" (click)="register()" class="btn btn-primary m-3">Register</button>
+                    <button type="button" (click)="cancel()" class="btn btn-secondary float-right">Cancel</button>
+                </div>
+                <hr class="my-2">
+                <div class="mt-2">
+                    <h3><b>Already have an account?</b></h3>
+                    <button type="button" (click)="cancel()" class="btn btn-link ">Log in</button>
+                </div>
+            </form>
+        </div>
+
     </div>
-     <div class="form-group m-3">
-       <label for="exampleInputPassword1">Password</label>
-       <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Password">
-     </div>
-     <div class="mx-3"><label class="text-primary">Terms</label></div>
 
-     <div class="form-check mx-3">
 
-       <input type="checkbox" class="form-check-input" id="exampleCheck1">
 
-       <label class="form-check-label" for="exampleCheck1">Please confirm that you agree to our terms & conditions</label>
-     </div>
-     <div >
-     <button type="button" (click)="register()" class="btn btn-primary m-3">Register</button>
-     <button type="button" (click)="cancel()" class="btn btn-secondary float-right">Cancel</button>
-    </div>
-    </form>
-  </div>
-
- </div>
+</div>
