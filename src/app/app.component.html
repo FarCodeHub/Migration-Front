@@ -1,7 +1,17 @@
+<header>
+    <mat-toolbar class="shadow bg-white">
+
+        <div class="d-flex p-4 container">
+            <div class="flex-fill ms-4">
+                Apply Visa
+            </div>
+            <button type="button" class="btn btn-outline-primary me-3">Login</button>
+            <button type="button" class="btn btn-outline-primary">Register</button>
+        </div>
+    </mat-toolbar>
+</header>
 
 
- <app-registration></app-registration>
- <main [@routeAnimations]="prepareRoute(outlet)" class="content">
-  <router-outlet #outlet="outlet"></router-outlet>
+<main [@routeAnimations]="prepareRoute(outlet)" class="content p-3">
+    <router-outlet #outlet="outlet"></router-outlet>
 </main>
-
