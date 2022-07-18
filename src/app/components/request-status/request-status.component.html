@@ -1,0 +1,41 @@
+
+<div class="background-login login-container">
+
+  <div class="container question-box">
+
+    <div  *ngIf=" user.status == 2">
+
+      <div class=" m-2 d-flex flex-column ustify-content-center">
+        <img src="assets/images/reject.png" class="h-20"  alt="">
+        <label class="title3" > Unfortunately, you were not approved. </label>
+
+      </div>
+
+    </div>
+
+
+    <div  *ngIf=" user.status == 3">
+
+      <div class=" m-2">
+        <img src="assets/images/done.png" style="width: 30%;
+        display: block;
+        margin-left: 64px;" alt="">
+        <label class="title3" style="display:block;    margin-top: 16px;
+        margin-bottom: 16px;"> Congratulations, you Are approved. </label>
+
+      </div>
+
+      <div  >Terms and Conditions :</div>
+      <div *ngFor="let item of user.personLawyers">
+        <mat-label> Conditions of {{item.fullName}}</mat-label>
+        <div *ngFor="let c of item.lawyerConditionModels">
+       <mat-label> {{c.title}}</mat-label>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    </div>
+    </div>

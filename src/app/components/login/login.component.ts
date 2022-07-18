@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ServiceResult } from 'src/app/models/service-result';
+import { User } from 'src/app/models/user';
 import { GlobalService } from 'src/app/services/global.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -47,10 +49,14 @@ singIn(){
   if (this.loginForm.get("userName")?.value == "admin" && this.loginForm.get("password")?.value == "123456")
   this.router.navigate(['/users']);
 
-  this.userService.getUser(user).subscribe((result:any)=>{
+  this.userService.getUser(user).subscribe((result:ServiceResult<User>)=>{
     if (result.succeed)
-    {   this.globalService.saveUser(result.objResult);
+    {
+      this.globalService.saveUser(result.objResult);
+      if (result.objResult.status == 0)
       this.router.navigate(['/registration']);
+      else
+    this.router.navigate(['/request-status']);
     }
 
   })

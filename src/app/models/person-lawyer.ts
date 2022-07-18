@@ -4,8 +4,13 @@ import { LawyerModel } from "./lawyer-model";
 export interface PersonLawyer {
     personId: number;
     lawyer: LawyerModel;
-    conditions: PersonCondition[]
+    lawyerId: number;
+    fullName:string;
+    personConditions: PersonCondition[]
+    lawyerConditionModels:LawyerCondition[]
 }
+
+
 
 export interface PersonCondition {
     personId: number;

@@ -32,7 +32,7 @@
                 Remove
             </button>
         </div>
-        <div *ngFor="let c of pl.conditions">
+        <div *ngFor="let c of pl.personConditions">
             <mat-checkbox [(ngModel)]="c.isSelected"> {{c.title}}</mat-checkbox>
         </div>
     </mat-card>
@@ -44,5 +44,5 @@
 
 <div mat-dialog-actions>
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+    <button mat-button [mat-dialog-close]="true" (click)="save()" cdkFocusInitial>Save</button>
 </div>

@@ -4,6 +4,8 @@ import { PersonService } from 'src/app/services/person.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AcceptRequestDialogComponent } from './accept-request-dialog/accept-request-dialog.component';
 import { LawyerConditionDialogComponent } from './lawyer-condition-dialog/lawyer-condition-dialog.component';
+import { CreatePersonLawyerCommand } from 'src/app/models/create-person-lawyer-command';
+import { PersonLawyerService } from 'src/app/services/person-lawyer.service';
 
 @Component({
     selector: 'app-users',
@@ -12,9 +14,10 @@ import { LawyerConditionDialogComponent } from './lawyer-condition-dialog/lawyer
 })
 export class UsersComponent implements OnInit {
     dataSource: PersonModel[] = [];
+    createPersonLawyerCommand:CreatePersonLawyerCommand={personLawyers:[]}
 
     displayedColumns: string[] = ['firstName', 'lastName', 'email', 'country', "visaType", "visaStatus", "action"];
-    constructor(private personService: PersonService, public dialog: MatDialog) {
+    constructor(private personService: PersonService, public dialog: MatDialog,private personLawyerService:PersonLawyerService) {
 
     }
     // columnDefs = [
@@ -66,9 +69,21 @@ export class UsersComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
 
+           this.createPersonLawyerCommand.personLawyers.push(...result);
+           this.personLawyerService.add(this.createPersonLawyerCommand).subscribe(item=>{
+            if (item.succeed)
+            this.personService.getPersons().subscribe((item: any) => {
+              return this.dataSource = item
+          })
+          this.createPersonLawyerCommand={personLawyers:[]}
+           })
+
+
         });
     }
 
 }
+
+
 
 
