@@ -1,3 +1,4 @@
+import { AdminPanelComponent } from './layouts/admin-panel/admin-panel.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -14,8 +15,12 @@ const routes: Routes = [
     { path: 'registration', component: RegistrationComponent, data: { animation: 'isLeft' } },
     { path: 'main', component: MainPageComponent, data: { animation: 'isLeft' } },
     { path: 'sign-up', component: SignUpComponent, data: { animation: 'isLeft' } },
-    { path: 'users', component: UsersComponent, data: { animation: 'isLeft' } },
     { path: 'request-status', component: RequestStatusComponent, data: { animation: 'isLeft' } },
+    {
+        path: 'admin', component: AdminPanelComponent, children: [
+            { path: 'requests', component: UsersComponent, data: { animation: 'isLeft' } },
+        ]
+    },
 ];
 
 @NgModule({

@@ -22,6 +22,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -33,6 +34,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LawyerConditionDialogComponent } from './components/users/lawyer-condition-dialog/lawyer-condition-dialog.component';
 import { RequestStatusComponent } from './components/request-status/request-status.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { AdminPanelComponent } from './layouts/admin-panel/admin-panel.component';
+import { SideMenuComponent } from './layouts/admin-panel/side-menu/side-menu.component';
 
 
 @NgModule({
@@ -47,6 +50,8 @@ import { MainPageComponent } from './components/main-page/main-page.component';
         LawyerConditionDialogComponent,
         RequestStatusComponent,
         MainPageComponent,
+        AdminPanelComponent,
+        SideMenuComponent,
 
 
 
@@ -74,7 +79,8 @@ import { MainPageComponent } from './components/main-page/main-page.component';
         MatTableModule,
         MatDialogModule,
         MatCheckboxModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatSidenavModule
     ],
     providers: [],
     bootstrap: [AppComponent]
